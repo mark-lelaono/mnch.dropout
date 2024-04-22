@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TUNZA MAMA</title>
+
+  <style>
+    /* CSS styles for both login and home page forms */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: url(doc.jpeg) no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .container {
+      width: 80%;
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #f5f5f5;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .input-box {
+      margin-bottom: 20px;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      outline: none;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+
+</head>
+<body>
+  <div class="container">
+    <!-- Login Form -->
+    <form id="login-form">
+      <h1>Login</h1>
+      <div class="input-box">
+        <input type="text" id="username" placeholder="Username" required>
+      </div>
+      <div class="input-box">
+        <input type="password" id="password" placeholder="Password" required>
+      </div>
+      <button type="submit">Login</button>
+    </form>
+    
+    <!-- Home Page Form -->
+    <form id="prediction-form" style="display: none;">
+      <h1>TUNZA MAMA</h1>
+      <div class="input-box">
+        <form id="prediction-form">
+            <label for="age-group">Current age group
+              <select id="age-group">
+                <option value="1">Select One</option>
+                <option value="2">15-24</option>
+                <option value="3">25-49</option>
+              </select>
+            </label>
+            <label for="maritalstatus">Marital-status
+              <select id="maritalstatus">
+                <option value="1">Select One</option>
+                <option value="2">Single</option>
+                <option value="3">Married</option>
+                <option value="4">Divorced</option>
+              </select>
+            </label>
+            <label for="wealth">Wealth Index
+              <select id="wealth">
+                <option value="1">Select One</option>
+                <option value="2">Poor</option>
+                <option value="3">Middle</option>
+                <option value="4">Rich</option>
+              </select>
+            </label>
+            <label for="distance">Distance to health Facility
+              <select id="distance">
+                <option value="1">Select One</option>
+                <option value="2">More than 4 KM</option>
+                <option value="3">Less than 4 KM</option>
+              </select>
+            </label>
+            <label for="media">Access to Media 
+              <select id="media">
+                <option value="1">Select One</option>
+                <option value="2">Yes</option>
+                <option value="3">No</option>
+              </select>
+            </label>
+            <label for="region">Place Of Residence
+              <select id="region">
+                <option value="1">Select One</option>
+                <option value="2">Urban</option>
+                <option value="3">Rural</option>
+              </select>
+            </label>
+            <label for="educational">Educational level
+              <select id="educational">
+                <option value="1">Select One</option>
+                <option value="2">None</option>
+                <option value="3">Primary</option>
+                <option value="4">Secondary</option>
+                <option value="5">Tertiary</option>
+              </select>
+            </label>
+            <label for="sex">Household Sex
+              <select id="sex">
+                <option value="1">Select One</option>
+                <option value="2">Male</option>
+                <option value="3">Female</option>
+              </select>
+            </label>
+            <button type="submit">Predict Dropout Risk</button>
+        
+    </form>
+    <div id="prediction-result" style="display: none;">
+        <h2>Prediction Result:</h2>
+        <p id="result-message"></p>
+      </div>
+  </div>
+
+  <script>
+    // JavaScript for Login Form
+    document.getElementById('login-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+       // Dummy authentication (replace with actual authentication logic)
+       if (username === 'admin' && password === 'password') {
+        // Hide login form and show prediction form
+        document.getElementById('login-form').style.display = 'none';
+        document.getElementById('prediction-form').style.display = 'block';
+      } else {
+        alert('Invalid username or password');
+      }
+    });
+
+    // JavaScript for Login Form
+     
+      document.getElementById('prediction-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      // Fetch input values
+      const currentAgeGroup = document.getElementById('age-group').value;
+      const maritalStatus = document.getElementById('maritalstatus').value;
+      const wealth = document.getElementById('wealth').value;
+      const distance = document.getElementById('distance').value;
+      const Media = document.getElementById('media').value;
+      const Region = document.getElementById('region').value;
+      const Educational = document.getElementById('educational').value;
+      const Sex = document.getElementById('sex').value;
+
+
+      // Perform prediction (dummy prediction)
+      let predictionResult;
+             if (currentAgeGroup === '2' && maritalStatus === '2' && wealth ==='2' && distance ==='2' && Media=== '3' && Region ==='3' && Educational=== '2' && Sex ==='2') {
+               predictionResult = 'Antenatal Care Stage';
+       } else if (currentAgeGroup === '2' && maritalStatus === '2' && wealth ==='3' && distance ==='2' && Media=== '3' && Region ==='3' && Educational==='3' && Sex ==='2') {
+              predictionResult = 'Antenatal Care Stage';      
+       } else if (currentAgeGroup === '2' && maritalStatus === '2' && wealth=== '3' && distance ==='3' && Media=== '3' && Region ==='2' && Educational=== '4' && Sex ==='3') {
+              predictionResult = 'Antenatal Care Stage';
+       }else if (currentAgeGroup ==='3' && maritalStatus === '3' && wealth=== '3' && distance ==='2' && Media=== '2' && Region ==='3' && Educational=== '2' && Sex ==='3') {
+              predictionResult = 'skilled Birth Stage';
+       }else if (currentAgeGroup === '2' && maritalStatus === '3' && wealth=== '2' && distance ==='2' && Media==='2' && Region ==='2' && Educational=== '4'&& Sex ==='2') {
+              predictionResult = 'PostNatal Care Stage';
+       } else if (currentAgeGroup === '3' && maritalStatus === '4' && wealth=== '3' && distance ==='2' && Media=== '2' && Region ==='2' && Educational=== '4' && Sex ==='2') {
+              predictionResult = 'PostNatal Care Stage'; 
+       }else {
+              predictionResult = 'YOU CANNOT DROP-OUT';
+       } 
+      
+
+      // Display prediction result
+      document.getElementById('result-message').textContent = predictionResult;
+      document.getElementById('prediction-result').style.display = 'block';
+    });
+
+   
+  </script>
+
+</body>
+</html>
